@@ -700,7 +700,7 @@ final class HTTPClient {
 						() @trusted { strcpy(cast(char*)s.sun_path.ptr,m_server.toStringz()); } ();
 					} else
 					{
-						addr = resolveHost(m_server, m_settings.dnsAddressFamily);
+						addr = resolveHost(m_server, m_settings.dnsAddressFamily, true, m_settings.connectTimeout);
 						addr.port = m_port;
 					}
 					m_conn = connectTCPWithTimeout(addr, m_settings.networkInterface, m_settings.connectTimeout);
